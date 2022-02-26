@@ -5,7 +5,7 @@ const CountryDetails = (props) => {
     const {countryName} = useParams();
     const [country,SetCountry] = useState({});
 
-    const {name,capital,region,area,flags}= props.country;
+    // const {name,capital,region,area,flags}= props.country;
     
     useEffect(()=>{
         const url =`https://restcountries.com/v3.1/name/${countryName}`;
