@@ -3,19 +3,22 @@ import { useParams } from 'react-router-dom';
 
 const CountryDetails = (props) => {
     const {countryName} = useParams();
-    const [country,SetCountry] = useState({});
+    const [country,SetCountry] = useState();
+    country &&  console.log(country?.population);
 
-    // const {name,capital,region,area,flags}= props.country;
+    // const {name,capital,region,area,flags}= country?.[0];
+    // console.log({capital});
     
     useEffect(()=>{
         const url =`https://restcountries.com/v3.1/name/${countryName}`;
         fetch(url)
         .then(res => res.json())
         .then(data=> SetCountry(data));
-    },[])
+    },[countryName])
     return (
         <div>
             <p>This is country details of <b>{countryName}</b></p>
+            {/* <p>population: {country[0]?.population}</p> */}
             
 
         </div>
