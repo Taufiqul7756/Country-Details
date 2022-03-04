@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 const CountryDetails = (props) => {
     const {countryName} = useParams();
-    const [country,SetCountry] = useState();
+    const [country,SetCountry] = useState([]);
     country &&  console.log(country?.population);
 
     // const {name,capital,region,area,flags}= country?.[0];
@@ -15,10 +15,14 @@ const CountryDetails = (props) => {
         .then(res => res.json())
         .then(data=> SetCountry(data));
     },[countryName])
+
     return (
         <div>
             <p>This is country details of <b>{countryName}</b></p>
-            {/* <p>population: {country[0]?.population}</p> */}
+
+            <p>Population: {country.population}</p>
+            {/* <p>Region: {country.region}</p>
+            <p>population: {country.capital}</p> */}
             
 
         </div>
